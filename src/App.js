@@ -1,14 +1,21 @@
+import { useState, useEffect } from 'react';
 import './App.css';
 
-const App = () => {
 
-  const name = 'Noni';
-  const isNameShowing = true;
+const App = () => {
+  const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    alert("You've changed the counter to" + counter)
+  }, [counter])
 
   return (
     <div className="App">
-      <h1>Hello, {isNameShowing ? name : 'Someone'} !</h1>
-    </div>
+      <h1>Counter</h1>
+      <button onClick={() => setCounter( (prevCount) => prevCount - 1 )}>-</button>
+      <h1>{counter}</h1>
+      <button onClick={() => setCounter( (prevCount) => prevCount + 1 )}>+</button>
+    </div>  
   );
 }
 
